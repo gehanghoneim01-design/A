@@ -1,8 +1,8 @@
 body{
 margin:0;
 overflow:hidden;
-background:skyblue;
-font-family:Arial;
+background:#87CEEB;
+font-family:Arial,sans-serif;
 }
 
 .road{
@@ -11,32 +11,31 @@ bottom:0;
 width:100%;
 height:220px;
 background:#444;
-overflow:hidden;
 }
 
-.line{
+.lines{
 position:absolute;
 top:105px;
 width:300%;
 height:10px;
 background:repeating-linear-gradient(
 90deg,
-white 0 80px,
-transparent 80px 150px
+white 0 70px,
+transparent 70px 140px
 );
-animation:road 1s linear infinite;
+animation:roadMove 1s linear infinite;
 }
 
-@keyframes road{
+@keyframes roadMove{
 from{transform:translateX(0);}
-to{transform:translateX(-150px);}
+to{transform:translateX(-140px);}
 }
 
 #tuktuk{
 position:absolute;
-bottom:80px;
 left:-120px;
-font-size:100px;
+bottom:75px;
+font-size:90px;
 cursor:pointer;
 animation:drive 8s linear infinite;
 }
@@ -54,6 +53,6 @@ transform:translateX(-50%);
 background:white;
 padding:10px 20px;
 border-radius:20px;
-font-size:22px;
 font-weight:bold;
+font-size:22px;
 }
