@@ -1,51 +1,63 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حرامي المحافظ الآن 🛺</title>
-<link rel="stylesheet" href="style.css">
-</head>
+const tuktuk = document.getElementById("tuktuk");
+const horn = document.getElementById("horn");
+const song = document.getElementById("song");
+const hint = document.getElementById("hint");
 
-<body>
+let started = false;
 
-<div class="sky">
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-</div>
+// أول ضغطة
+tuktuk.addEventListener("click", () => {
 
-<div class="road">
-    <div class="line"></div>
-</div>
+    // اختفاء الرسالة
+    hint.style.display = "none";
 
-<div id="tuktuk">
+    // كلاكس
+    horn.currentTime = 0;
+    horn.play();
 
-    <img src="tuktuk.png" class="body">
+    // تشغيل الأغنية مرة واحدة
+    if (!started) {
 
-    <div class="text">
-        حرامي<br>
-        المحافظ<br>
-        الآن
-    </div>
+        started = true;
 
-    <div class="smoke"></div>
+        setTimeout(() => {
+            song.play();
+        }, 900);
 
-</div>
+    }
 
-<div id="hint">
-🛺 اضغط على التوكتوك
-</div>
+});
 
-<audio id="horn">
-<source src="horn.mp3" type="audio/mpeg">
-</audio>
+// كلاكس كل 15 ثانية أثناء الأغنية
+setInterval(() => {
 
-<audio id="song">
-<source src="song.mp3" type="audio/mpeg">
-</audio>
+    if (started) {
 
-<script src="script.js"></script>
+        horn.currentTime = 0;
+        horn.play();
 
-</body>
-</html>
+    }
+
+},15000);
+
+
+// لو الأغنية خلصت تبدأ من أول
+song.addEventListener("ended", () => {
+
+    song.currentTime = 0;
+    song.play();
+
+});
+
+
+// عند الضغط على زر Space
+document.addEventListener("keydown",(e)=>{
+
+    if(e.code==="Space"){
+
+        horn.currentTime=0;
+        horn.play();
+
+    }
+
+});
