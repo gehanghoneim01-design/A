@@ -7,94 +7,22 @@ box-sizing:border-box;
 body{
 overflow:hidden;
 height:100vh;
+background:linear-gradient(#7ec8ff,#dff7ff);
 font-family:Arial;
-background:#7ec8ff;
 }
-
-/* السماء */
 
 .sky{
 position:absolute;
 width:100%;
 height:70%;
-background:linear-gradient(#71c8ff,#dff8ff);
 }
-
-/* السحب */
-
-.cloud{
-position:absolute;
-background:white;
-border-radius:50px;
-opacity:.9;
-animation:cloudMove 35s linear infinite;
-}
-
-.cloud::before,
-.cloud::after{
-content:"";
-position:absolute;
-background:white;
-border-radius:50%;
-}
-
-.cloud::before{
-width:45px;
-height:45px;
-left:15px;
-top:-20px;
-}
-
-.cloud::after{
-width:60px;
-height:60px;
-left:55px;
-top:-30px;
-}
-
-.c1{
-width:120px;
-height:40px;
-top:60px;
-left:-180px;
-}
-
-.c2{
-width:150px;
-height:50px;
-top:140px;
-left:-350px;
-animation-duration:45s;
-}
-
-.c3{
-width:110px;
-height:35px;
-top:230px;
-left:-550px;
-animation-duration:55s;
-}
-
-@keyframes cloudMove{
-
-from{
-transform:translateX(0);
-}
-
-to{
-transform:translateX(1800px);
-}
-
-}
-
-/* الطريق */
 
 .road{
 position:absolute;
 bottom:0;
 width:100%;
 height:220px;
-background:#3d3d3d;
+background:#444;
 overflow:hidden;
 }
 
@@ -103,188 +31,58 @@ position:absolute;
 top:105px;
 width:300%;
 height:10px;
-
-background:
-repeating-linear-gradient(
+background:repeating-linear-gradient(
 90deg,
 white 0 80px,
 transparent 80px 150px
 );
-
 animation:road 1s linear infinite;
 }
 
 @keyframes road{
-
-from{
-transform:translateX(0);
+from{transform:translateX(0);}
+to{transform:translateX(-150px);}
 }
-
-to{
-transform:translateX(-150px);
-}
-
-}
-
-/* التوكتوك */
 
 #tuktuk{
-
 position:absolute;
-
-width:250px;
-
-bottom:110px;
-
-left:-260px;
-
-animation:
-drive 10s linear infinite,
-shake .12s infinite;
-
+bottom:90px;
+left:-120px;
+font-size:110px;
 cursor:pointer;
-
-z-index:5;
-
+animation:drive 9s linear infinite,shake .12s infinite;
 }
-
-.body{
-
-width:100%;
-
-display:block;
-
-}
-
-/* الحركة */
 
 @keyframes drive{
-
-0%{
-left:-260px;
-transform:scaleX(1);
+0%{left:-120px;}
+100%{left:110%;}
 }
-
-49%{
-transform:scaleX(1);
-}
-
-50%{
-left:calc(100% - 250px);
-transform:scaleX(-1);
-}
-
-99%{
-transform:scaleX(-1);
-}
-
-100%{
-left:-260px;
-transform:scaleX(1);
-}
-
-}
-
-/* الاهتزاز */
 
 @keyframes shake{
-
-0%,100%{
-translate:0 0;
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-2px);}
 }
-
-50%{
-translate:0 -2px;
-}
-
-}
-
-/* الكتابة */
 
 .text{
-
 position:absolute;
-
-right:12px;
-
-top:45px;
-
-width:70px;
-
+left:85px;
+top:35px;
+background:#ffd500;
+padding:5px 10px;
+border-radius:10px;
+font-size:18px;
 font-weight:bold;
-
-font-size:17px;
-
-text-align:center;
-
-color:white;
-
-text-shadow:2px 2px 3px black;
-
-}
-
-/* الدخان */
-
-.smoke{
-
-position:absolute;
-
-left:-5px;
-
-top:95px;
-
-width:18px;
-
-height:18px;
-
-border-radius:50%;
-
-background:rgba(220,220,220,.6);
-
-animation:smoke 1.2s infinite;
-
-}
-
-@keyframes smoke{
-
-0%{
-
-transform:scale(.3);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translate(-40px,-60px) scale(2);
-
-opacity:0;
-
-}
-
+white-space:nowrap;
 }
 
 #hint{
-
 position:absolute;
-
 top:20px;
-
 left:50%;
-
 transform:translateX(-50%);
-
-padding:10px 18px;
-
-background:#ffffffdd;
-
+background:white;
+padding:10px 20px;
 border-radius:20px;
-
-font-size:20px;
-
 font-weight:bold;
-
-box-shadow:0 5px 12px #0003;
-
+box-shadow:0 0 10px #0003;
 }
