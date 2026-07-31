@@ -1,42 +1,63 @@
 const tuktuk = document.getElementById("tuktuk");
 const horn = document.getElementById("horn");
 const song = document.getElementById("song");
+const hint = document.getElementById("hint");
 
 let started = false;
 
+// أول ضغطة
 tuktuk.addEventListener("click", () => {
 
-    // أول ضغطة فقط
-    if(started) {
-
-        horn.currentTime = 0;
-        horn.play();
-
-        return;
-    }
-
-    started = true;
+    // اختفاء الرسالة
+    hint.style.display = "none";
 
     // كلاكس
+    horn.currentTime = 0;
     horn.play();
 
-    // بعد الكلاكس تبدأ الأغنية
-    setTimeout(() => {
+    // تشغيل الأغنية مرة واحدة
+    if (!started) {
 
-        song.play();
+        started = true;
 
-    },1200);
+        setTimeout(() => {
+            song.play();
+        }, 900);
+
+    }
 
 });
 
-// كلاكس كل 18 ثانية أثناء الأغنية
+// كلاكس كل 15 ثانية أثناء الأغنية
 setInterval(() => {
 
-    if(started){
+    if (started) {
 
         horn.currentTime = 0;
         horn.play();
 
     }
 
-},18000);
+},15000);
+
+
+// لو الأغنية خلصت تبدأ من أول
+song.addEventListener("ended", () => {
+
+    song.currentTime = 0;
+    song.play();
+
+});
+
+
+// عند الضغط على زر Space
+document.addEventListener("keydown",(e)=>{
+
+    if(e.code==="Space"){
+
+        horn.currentTime=0;
+        horn.play();
+
+    }
+
+});
