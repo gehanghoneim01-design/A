@@ -2,20 +2,20 @@ const tuk = document.getElementById("tuktuk");
 const song = document.getElementById("song");
 const hint = document.getElementById("hint");
 
-let started = false;
+let played = false;
 
-tuk.onclick = () => {
+tuk.addEventListener("click", function(){
 
     hint.style.display = "none";
 
-    if (!started) {
-        started = true;
+    if(!played){
+        played = true;
         song.play();
     }
 
-};
+});
 
-song.onended = () => {
+song.addEventListener("ended", function(){
     song.currentTime = 0;
     song.play();
-};
+});
