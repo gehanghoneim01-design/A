@@ -1,43 +1,21 @@
-const tuk=document.getElementById("tuktuk");
-const horn=document.getElementById("horn");
-const song=document.getElementById("song");
-const hint=document.getElementById("hint");
+const tuk = document.getElementById("tuktuk");
+const song = document.getElementById("song");
+const hint = document.getElementById("hint");
 
-let started=false;
+let started = false;
 
-tuk.onclick=()=>{
+tuk.onclick = () => {
 
-hint.style.display="none";
+    hint.style.display = "none";
 
-if(horn){
-horn.currentTime=0;
-horn.play().catch(()=>{});
-}
-
-if(!started){
-
-started=true;
-
-setTimeout(()=>{
-song.play().catch(()=>{});
-},700);
-
-}
+    if (!started) {
+        started = true;
+        song.play();
+    }
 
 };
 
-setInterval(()=>{
-
-if(started && horn){
-
-horn.currentTime=0;
-horn.play().catch(()=>{});
-
-}
-
-},15000);
-
-song.onended=()=>{
-song.currentTime=0;
-song.play();
+song.onended = () => {
+    song.currentTime = 0;
+    song.play();
 };
